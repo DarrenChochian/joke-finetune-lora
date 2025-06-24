@@ -6,10 +6,8 @@ import torch
 
 model_name = "mistralai/Mistral-7B-Instruct-v0.1"
 
-# Load dataset
 data = load_dataset("json", data_files="data/jokes.jsonl")["train"]
 
-# Prompt + response formatting
 def format(example):
     return {
         "text": f"<s>[INST] {example['prompt']} [/INST] {example['response']}</s>"
@@ -17,7 +15,6 @@ def format(example):
 
 data = data.map(format)
 
-# Load tokenizer and model in 4bit
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 tokenizer.pad_token = tokenizer.eos_token
 
@@ -27,7 +24,6 @@ model = AutoModelForCausalLM.from_pretrained(
     device_map="auto"
 )
 
-# LoRA configuration
 lora_config = LoraConfig(
     r=8,
     lora_alpha=32,
@@ -39,13 +35,11 @@ lora_config = LoraConfig(
 
 model = get_peft_model(model, lora_config)
 
-# Tokenize the text
 def tokenize(example):
     return tokenizer(example["text"], truncation=True, padding="max_length", max_length=512)
 
 tokenized = data.map(tokenize)
 
-# Training configuration
 args = TrainingArguments(
     output_dir="models/jokebot",
     per_device_train_batch_size=1,

@@ -1,1 +1,3 @@
-data/reddit_jokes.csv
+echo data/reddit_jokes.csv >> .gitignore
+git add .gitignore
+git commit -m "Ignore reddit_jokes.csv to avoid upload issues"
