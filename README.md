@@ -1,1 +1,1 @@
-This project fine-tunes the Mistral 7B language model using LoRA on a curated dataset of 1,000 Reddit jokes to create a lightweight, local joke-generating chatbot. It showcases real-world instruction tuning, dataset preprocessing, and model deployment using modern open-source tools.
+
