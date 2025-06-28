@@ -1,8 +1,5 @@
-echo data/reddit_jokes.csv >> .gitignore
-echo ".venv/" >> .gitignore
-echo "models/" >> .gitignore
-echo "data/*.jsonl" >> .gitignore
-echo "data/one-million-reddit-jokes.csv" >> .gitignore
-
+jokes_10k.jsonl
+jokes.jsonl
+one-million-reddit-jokes.csv
 .venv/
 
