@@ -23,4 +23,4 @@ with open(output_path, "w", encoding="utf-8") as f:
         response = joke.strip().replace("\n", " ")
         f.write(json.dumps({"prompt": prompt, "response": response}) + "\n")
 
-print(f"✅ Saved {len(df)} jokes to {output_path}")
+print(f"Saved {len(df)} jokes to {output_path}")
